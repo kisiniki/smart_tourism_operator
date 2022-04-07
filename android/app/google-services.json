@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "232983407095",
+    "project_id": "sepedapintartubaba2022",
+    "storage_bucket": "sepedapintartubaba2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232983407095:android:6e243d9fdd57b3bae566f2",
+        "android_client_info": {
+          "package_name": "com.example.smart_tourism_operator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232983407095-nf1cn4h4dv0v93f1hb27napa3ru2jghm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApELeiMH4OKubbrqon25AH7mCSBEf82wM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232983407095-nf1cn4h4dv0v93f1hb27napa3ru2jghm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
