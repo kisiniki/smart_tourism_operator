@@ -38,9 +38,12 @@ class _SepedaRunningRouteState extends State<SepedaRunningRoute> {
   void initState() {
     super.initState();
     locationService.locationStram.listen((userLocation) {
-      setState(() {
+      if (mounted) {
+        setState(() {
         setMarker();
       });
+      }
+      
     });
   }
 
@@ -255,9 +258,7 @@ class _SepedaRunningRouteState extends State<SepedaRunningRoute> {
                     ],
                   );
                 }
-                return Center(
-                  child: loadingIndicator,
-                );
+                return loadingIndicator;
               })),
     );
   }

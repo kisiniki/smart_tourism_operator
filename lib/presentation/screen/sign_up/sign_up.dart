@@ -98,7 +98,6 @@ class _SignUpRouteState extends State<SignUpRoute> {
                         fontWeight: FontWeight.w700),
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    obscureText: true,
                     decoration: InputDecoration(
                         hintText: 'E-mail',
                         hintStyle: const TextStyle(
@@ -202,13 +201,31 @@ class _SignUpRouteState extends State<SignUpRoute> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           ElevatedButton(
+                            style: ButtonStyle(backgroundColor:
+                                MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.pressed)) {
+                                return primaryColor;
+                              }
+                              return secondaryColor;
+                            })),
                             onPressed: _choose,
-                            child: const Text('Choose Image'),
+                            child: const Text(
+                              'Choose Image',
+                              style: TextStyle(color: white),
+                            ),
                           ),
                           const SizedBox(width: 10.0),
                           ElevatedButton(
+                            style: ButtonStyle(backgroundColor:
+                                MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.pressed)) {
+                                return primaryColor;
+                              }
+                              return secondaryColor;
+                            })),
                             onPressed: _upload,
-                            child: const Text('Upload Image'),
+                            child: const Text('Upload Image',
+                              style: TextStyle(color: white),),
                           )
                         ],
                       ),
@@ -278,6 +295,7 @@ class _SignUpRouteState extends State<SignUpRoute> {
       'fcm_registration_id': tokenFCM,
       "photo": 'data:image/png;base64,$base64Image'
     };
+    print('tokenya $tokenFCM');
     var res = await http.post(url, body: body);
     if (res.statusCode == 200) {
       var jsonResponse = json.decode(res.body);
@@ -302,6 +320,7 @@ class _SignUpRouteState extends State<SignUpRoute> {
       ).show(context);
     }
   }
+
   Future _choose() async {
     final ImagePicker _picker = ImagePicker();
     // var file = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -311,11 +330,15 @@ class _SignUpRouteState extends State<SignUpRoute> {
     //   file = File(file.path) as XFile;
     // });
   }
+
   void _upload() async {
     if (file == null) return;
-    // if (file == null) return;
+    
     List<int> imageBytes = await file!.readAsBytes();
     base64Image = base64Encode(imageBytes);
+    setState(() {
+      
+    });
     // String base64Image = base64Encode(file.readAsBytesSync());
     // String fileName = file.path.split("/").last;
     // final bytes = Io.File(file).readAsBytesSync();

@@ -20,10 +20,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const HomeScreen(),
      const HistoryRoute(),
   ];
+  late String barcodeScanRes;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    barcodeScanRes = '';
+    super.initState();
   }
 
   @override
@@ -64,7 +72,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   Future<void> scanBarcodeNormal() async {
-    String barcodeScanRes;
+    
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
@@ -72,7 +80,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
       // await getVehicleDetail(barcodeScanRes);
       Navigator.pushNamed(context, sepedaDetailRoute,
           arguments: {'id': barcodeScanRes});
-      // print(barcodeScanRes);
+          barcodeScanRes = '';
+      print(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }

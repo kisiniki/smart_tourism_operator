@@ -56,7 +56,7 @@ class _VehicleDetailRouteState extends State<SepedaDetailSRoute> {
                               child: Text(
                                 'Sepeda',
                                 style: TextStyle(
-                                    fontSize: 89,
+                                    fontSize: 70,
                                     fontWeight: FontWeight.w800,
                                     color: white),
                               ),

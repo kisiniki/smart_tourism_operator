@@ -52,7 +52,7 @@ class _TagihanRouteState extends State<TagihanRoute> {
                                 child: Text(
                                   'TAGIHAN',
                                   style: TextStyle(
-                                      fontSize: 56,
+                                      fontSize: 50,
                                       fontWeight: FontWeight.w700,
                                       color: white),
                                 ),
@@ -74,7 +74,7 @@ class _TagihanRouteState extends State<TagihanRoute> {
                                   'Perjalanan',
                                   style: TextStyle(
                                       fontSize: 22,
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w700,
                                       color: white),
                                 ),
                               ),
@@ -82,7 +82,29 @@ class _TagihanRouteState extends State<TagihanRoute> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 25),
                                 child: Text(
-                                  '${data!.duration == null ? '-' : '${data.duration}'} menit x Rp.${data.rental!.vehicle!.fare},-/menit',
+                                  'Rp.${data!.rental!.vehicle!.fare},-/30menit',
+                                  style: TextStyle(
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.w400,
+                                      color: white),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0),
+                                child: Text(
+                                  'Tarif',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700,
+                                      color: white),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 25),
+                                child: Text(
+                                  '${data.duration == null ? '-' : '${data.duration}'} menit',
                                   style: TextStyle(
                                       fontSize: 19,
                                       fontWeight: FontWeight.w400,
@@ -116,7 +138,7 @@ class _TagihanRouteState extends State<TagihanRoute> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12.0),
                                 child: Text(
-                                  'Id Kendaraan : ',
+                                  'Seri Kendaraan : ',
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w400,
@@ -127,7 +149,7 @@ class _TagihanRouteState extends State<TagihanRoute> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 25),
                                 child: Text(
-                                  data.rental!.vehicleId.toString(),
+                                  data.rental!.vehicle!.serialNumber!,
                                   style: TextStyle(
                                       fontSize: 19,
                                       fontWeight: FontWeight.w700,
@@ -192,7 +214,7 @@ class _TagihanRouteState extends State<TagihanRoute> {
                                 ),
                               ),
                               SizedBox(
-                                height: screenHeight(context) * 0.05,
+                                height: screenHeight(context) * 0.02,
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -223,8 +245,8 @@ class _TagihanRouteState extends State<TagihanRoute> {
                         ),
                       ),
                       SizedBox(
-                        height: screenHeight(context) * 0.05,
-                      ),
+                                height: screenHeight(context) * 0.02,
+                              ),
                       Divider(
                         color: primaryColor,
                         thickness: 5,

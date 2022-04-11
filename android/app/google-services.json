@@ -7,7 +7,36 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:232983407095:android:6e243d9fdd57b3bae566f2",
+        "mobilesdk_app_id": "1:232983407095:android:23cafbaf92c52956e566f2",
+        "android_client_info": {
+          "package_name": "com.example.smart_tourism"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232983407095-nf1cn4h4dv0v93f1hb27napa3ru2jghm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApELeiMH4OKubbrqon25AH7mCSBEf82wM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232983407095-nf1cn4h4dv0v93f1hb27napa3ru2jghm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232983407095:android:f45283d82e22afe9e566f2",
         "android_client_info": {
           "package_name": "com.example.smart_tourism_operator"
         }

@@ -32,7 +32,7 @@ class SepedaContainer extends StatelessWidget {
               left: 10,
               child: Text('Sepeda',
                   style: GoogleFonts.roboto(
-                      fontSize: 40,
+                      fontSize: 35,
                       fontWeight: FontWeight.w700,
                       color: white))),
         ],

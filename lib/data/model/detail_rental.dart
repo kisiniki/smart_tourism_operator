@@ -26,7 +26,7 @@ class DetailRentalModel {
     if (location != null) {
       data['location'] = location!.toJson();
     }
-    data['cost'] = cost;
+    data['cost'] = cost == null ? cost : 0;
     return data;
   }}
   class Rental {

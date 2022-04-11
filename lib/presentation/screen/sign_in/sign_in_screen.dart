@@ -6,7 +6,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_tourism_operator/utils/assets.dart';
-import 'package:smart_tourism_operator/utils/colors.dart';
 import 'package:smart_tourism_operator/utils/config.dart';
 
 import '../../../router/constants.dart';
@@ -23,13 +22,13 @@ class _LoginRouteState extends State<LoginRoute> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final storage = const FlutterSecureStorage();
-  FirebaseMessaging? messaging;
+  late FirebaseMessaging messaging;
 
   @override
   void initState() {
     super.initState();
     messaging = FirebaseMessaging.instance;
-    messaging!.getToken().then((value) {
+    messaging.getToken().then((value) {
       // print('hasil $value');
       storage.write(key: fcmToken, value: value);
     });
@@ -233,15 +232,17 @@ class _LoginRouteState extends State<LoginRoute> {
   }
 
   Future<void> login(String email, String password) async {
+    var response;
     Uri url = Uri.parse(AppUrl.loginAPI);
     var tokenFCM = await storage.read(key: fcmToken);
+    print(tokenFCM);
     Map body = {
       "email": email,
       "password": password,
       "fcm_registration_id": tokenFCM
     };
-
     var res = await http.post(url, body: body);
+    response = json.decode(res.body);
     if (res.statusCode == 200) {
       var jsonResponse = json.decode(res.body);
       var valueToken = jsonResponse['access_token'];
@@ -257,7 +258,7 @@ class _LoginRouteState extends State<LoginRoute> {
       }
     } else {
       Flushbar(
-        message: 'Email atau Passeord salah, Masukan data dengan benar!',
+        message: response['message'].toString(),
         icon: const Icon(
           Icons.info_outline,
           size: 28.0,

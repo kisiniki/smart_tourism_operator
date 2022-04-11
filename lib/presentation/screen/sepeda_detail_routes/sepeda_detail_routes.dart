@@ -22,6 +22,12 @@ class SepedaDetailRoute extends StatefulWidget {
 }
 
 class _SepedaDetailRouteState extends State<SepedaDetailRoute> {
+  String barcodeScanRes ='';
+  @override
+  void initState() {
+    super.initState();
+    barcodeScanRes='';
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,7 +220,7 @@ class _SepedaDetailRouteState extends State<SepedaDetailRoute> {
   }
   Future<void> scanBarcodeNormal() async {
     String _scanBarcode = 'Unknown';
-    String barcodeScanRes;
+    
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(

@@ -16,11 +16,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_tourism_operator/presentation/widget/my_container.dart';
 import 'package:smart_tourism_operator/presentation/widget/sepeda_containter.dart';
 import 'package:smart_tourism_operator/utils/config.dart';
-import 'package:smart_tourism_operator/main.dart';
 
 import '../../../data/model/profile.dart';
 import '../../../data/model/running.dart';
 import '../../../data/model/vehicle.dart';
+import '../../../main.dart';
 import '../../../router/constants.dart';
 import '../../../utils/api.dart';
 import '../../../utils/assets.dart';
@@ -42,14 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
     var readData = await storage.read(key: keyToken);
     return readData;
   }
+
   Location location = Location();
   LocationService locationService = LocationService();
   Set<Marker> marker = {};
   String barcode = "";
   List<String> listVehicle = [iconMenuSepeda, imageATV];
-  // var vehicleId, rentalid;
-AndroidNotificationChannel? channel;
-FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
   @override
   void initState() {
     super.initState();
@@ -64,6 +62,24 @@ FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
             arguments: {'idVehicle': vehicleID, 'idRental': rentalID});
       }
     });
+    // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //   RemoteNotification? notification = message.notification;
+    //   AndroidNotification? android = message.notification!.android;
+    //   if (notification != null && android != null && !kIsWeb) {
+    //     print('hasil ${message.data}');
+    //     flutterLocalNotificationsPlugin!.show(
+    //       notification.hashCode,
+    //       notification.title,
+    //       notification.body,
+    //       NotificationDetails(
+    //         android: AndroidNotificationDetails(
+    //           channel!.id,
+    //           channel!.name,
+    //         ),
+    //       ),
+    //     );
+    //   }
+    // });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
@@ -94,7 +110,6 @@ FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
   @override
   void dispose() {
     super.dispose();
-    
   }
 
   Future<void> refreshList() async {
@@ -105,7 +120,6 @@ FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
       getListBerjalan();
       getListEnded();
     });
-    return;
   }
 
   void getDataFcm(Map<String, dynamic> message) {
