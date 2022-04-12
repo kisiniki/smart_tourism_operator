@@ -296,9 +296,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: primaryColor),
                                   ),
                                   SizedBox(
-                                    height: screenHeight(context) * 0.02,
-                                  ),
-                                  SizedBox(
                                     // height: screenHeight(context) * 0.5,
                                     child: FutureBuilder<List<Waiting>>(
                                         future: getListPesanan(),
@@ -324,22 +321,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
-                                                  return Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        vertical: 8.0),
-                                                    child: InkWell(
-                                                      child: MyContainer(
-                                                          name:
-                                                              serialNumberList[
-                                                                  index],
-                                                          vehicleType:
-                                                              vehicleTypeList[
-                                                                          index] ==
-                                                                      1
-                                                                  ? 'sepeda'
-                                                                  : 'ATV'),
-                                                    ),
+                                                  return InkWell(
+                                                    child: MyContainer(
+                                                        name:
+                                                            serialNumberList[
+                                                                index],
+                                                        vehicleType:
+                                                            vehicleTypeList[
+                                                                        index] ==
+                                                                    1
+                                                                ? 'sepeda'
+                                                                : 'ATV'),
                                                   );
                                                 });
                                           } else if (snapshot.hasError) {
@@ -348,6 +340,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           return Center(
                                               child: loadingIndicator);
                                         }),
+                                  ),
+                                  SizedBox(
+                                    height: screenHeight(context) * 0.03,
                                   ),
                                   const Text(
                                     'Sedang Berjalan',
@@ -387,34 +382,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
-                                                  return Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        vertical: 8.0),
-                                                    child: InkWell(
-                                                      onTap: () async {
-                                                        await Navigator.pushNamed(
-                                                            context,
-                                                            sepedaRunningRoute,
-                                                            arguments: {
-                                                              'idVehicle':
-                                                                  vehicleIdList[
-                                                                      index],
-                                                              'idRental':
-                                                                  rentalList[
-                                                                      index]
-                                                            });
-                                                      },
-                                                      child: MyContainer(
-                                                          name:
-                                                              '${serialNumberList[index]}',
-                                                          vehicleType:
-                                                              vehicleTypeList[
-                                                                          index] ==
-                                                                      1
-                                                                  ? 'sepeda'
-                                                                  : 'ATV'),
-                                                    ),
+                                                  return InkWell(
+                                                    onTap: () async {
+                                                      await Navigator.pushNamed(
+                                                          context,
+                                                          sepedaRunningRoute,
+                                                          arguments: {
+                                                            'idVehicle':
+                                                                vehicleIdList[
+                                                                    index],
+                                                            'idRental':
+                                                                rentalList[
+                                                                    index]
+                                                          });
+                                                    },
+                                                    child: MyContainer(
+                                                        name:
+                                                            '${serialNumberList[index]}',
+                                                        vehicleType:
+                                                            vehicleTypeList[
+                                                                        index] ==
+                                                                    1
+                                                                ? 'sepeda'
+                                                                : 'ATV'),
                                                   );
                                                 });
                                           } else if (snapshot.hasError) {
@@ -433,9 +423,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontSize: 25,
                                         fontWeight: FontWeight.w700,
                                         color: primaryColor),
-                                  ),
-                                  SizedBox(
-                                    height: screenHeight(context) * 0.02,
                                   ),
                                   SizedBox(
                                     child: FutureBuilder<List<Ended>>(
@@ -468,38 +455,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
-                                                  return Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        vertical: 8.0),
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            tagihanRoute,
-                                                            arguments: {
-                                                              'idVehicle':
-                                                                  vehicleIdList[
-                                                                      index],
-                                                              'idRental':
-                                                                  rentalList[
-                                                                      index]
-                                                            });
-                                                      },
-                                                      child: MyContainer(
-                                                          name: data
-                                                              .elementAt(0)
-                                                              .vehicle!
-                                                              .serialNumber!,
-                                                          vehicleType: data
-                                                                      .elementAt(
-                                                                          0)
-                                                                      .vehicle!
-                                                                      .vehicleTypeId ==
-                                                                  1
-                                                              ? 'sepeda'
-                                                              : 'ATV'),
-                                                    ),
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      Navigator.pushNamed(
+                                                          context,
+                                                          tagihanRoute,
+                                                          arguments: {
+                                                            'idVehicle':
+                                                                vehicleIdList[
+                                                                    index],
+                                                            'idRental':
+                                                                rentalList[
+                                                                    index]
+                                                          });
+                                                    },
+                                                    child: MyContainer(
+                                                        name: data
+                                                            .elementAt(0)
+                                                            .vehicle!
+                                                            .serialNumber!,
+                                                        vehicleType: data
+                                                                    .elementAt(
+                                                                        0)
+                                                                    .vehicle!
+                                                                    .vehicleTypeId ==
+                                                                1
+                                                            ? 'sepeda'
+                                                            : 'ATV'),
                                                   );
                                                 });
                                           } else if (snapshot.hasError) {

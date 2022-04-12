@@ -14,7 +14,7 @@ class MyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: screenHeight(context)*0.08,
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5 ),
+      padding: const EdgeInsets.symmetric(horizontal: 30,),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: primaryColor)),
